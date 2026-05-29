@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<!-- Checkout Page -->
+<html lang="en">
+<head>
+    <title>Checkout</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Page layout style */
+        .checkout-wrapper {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        /* Order summary section style */
+        .order-summary {
+            flex: 1;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            position: sticky;
+            top: 20px;
+        }
+        .order-summary h2 {
+            margin-top: 0;
+            font-size: 22px;
+            color: #333;
+        }
+        .order-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .order-item img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .order-total {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+
+        /* Form section style */
+        .form-container {
+            flex: 2;
+        }
+        .form-section {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .form-section h3 {
+            margin-top: 0;
+            color: #d84a8c;
+            font-size: 18px;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: #333;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        /* Payment option style */
+        .payment-option {
+            margin-bottom: 10px;
+        }
+
+        /* Submit button style */
+        .submit-btn {
+            width: 100%;
+            background-color: #d84a8c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 12px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #c03c7a;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header and navigation -->
+    <header>
+        <h1>Checkout</h1>
+        <a href="index.html" style="margin-left:20px;">Home</a>
+        <a href="about.html" style="margin-left:20px;">About</a>
+        <a href="cart.html" style="margin-left:20px;">Cart</a>
+        <a href="checkout.html" style="margin-left:20px;">Checkout</a>
+    </header>
+
+    <!-- Checkout main content -->
+    <div class="checkout-wrapper">
+        <!-- Order summary -->
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+            <div id="checkout-items"></div>
+            <div class="order-total" id="checkout-total"></div>
+        </div>
+
+        <!-- Checkout form -->
+        <div class="form-container">
+            <!-- Shipping information form -->
+            <div class="form-section">
+                <h3>Shipping Information</h3>
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Shipping Address</label>
+                    <input type="text" id="address" placeholder="Shipping Address" required>
+                </div>
+                <div class="form-group">
+                    <label for="city">City, State, ZIP Code</label>
+                    <input type="text" id="city" placeholder="City, State, ZIP Code" required>
+                </div>
+            </div>
+
+            <!-- Payment information form -->
+            <div class="form-section">
+                <h3>Payment Information</h3>
+                <div class="form-group">
+                    <label for="cardname">Name on Card</label>
+                    <input type="text" id="cardname" placeholder="Name on Card" required>
+                </div>
+                <div class="form-group">
+                    <label for="cardnumber">Card Number</label>
+                    <input type="text" id="cardnumber" placeholder="1234 5678 9012 3456" required>
+                </div>
+                <div class="form-group">
+                    <label for="expiry">Expiry Date</label>
+                    <input type="text" id="expiry" placeholder="MM/YY" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" placeholder="123" required>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" id="card" name="payment" checked>
+                    <label for="card">Credit / Debit Card</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" id="paypal" name="payment">
+                    <label for="paypal">PayPal</label>
+                </div>
+            </div>
+
+            <!-- Place order button -->
+            <button class="submit-btn" id="placeOrderBtn">Place Order</button>
+        </div>
+    </div>
+
+    <!-- Website footer -->
+    <footer>
+        <p>&copy; 2026 Women's Fashion Shop. All rights reserved.</p>
+    </footer>
+
+    <!-- Cart functions script -->
+    <script src="script.js"></script>
+    <script>
+        // Store product information
+        const productInfo = {
+            1: { name: "Elegant White Wrap Dress", price: 39.99, image: "images/dress1.jpg" },
+            2: { name: "Vintage Blue Linen Dress", price: 49.99, image: "images/dress2.jpg" },
+            3: { name: "Off-Shoulder Satin Gown", price: 59.99, image: "images/dress3.jpg" },
+            4: { name: "Sparkle Glitter Wedding Heels", price: 49.99, image: "images/shoes1.jpg" },
+            5: { name: "Crystal-Strap Pointed Heels", price: 54.99, image: "images/shoes2.jpg" },
+            6: { name: "Pearl-Embellished Lace Heels", price: 59.99, image: "images/shoes3.jpg" },
+            7: { name: "Beige Linen Wide-Leg Trousers", price: 29.99, image: "images/pants1.jpg" },
+            8: { name: "Taupe Pleated Linen Trousers", price: 39.99, image: "images/pants2.jpg" },
+            9: { name: "White Straight-Leg Denim Jeans", price: 49.99, image: "images/pants3.jpg" }
+        };
+
+        // Load cart items to checkout page
+        function loadCheckout() {
+            let cart = getCart();
+            let container = document.getElementById("checkout-items");
+            let total = 0;
+
+            // If cart is empty
+            if (cart.length === 0) {
+                container.innerHTML = "<p>Your cart is empty.</p>";
+                document.getElementById("checkout-total").textContent = "Total: $0.00";
+                return;
+            }
+
+            // Display cart items
+            cart.forEach(item => {
+                let product = productInfo[item.id];
+                let subtotal = product.price * item.quantity;
+                total += subtotal;
+
+                container.innerHTML += `
+                    <div class="order-item">
+                        <img src="${product.image}" alt="${product.name}">
+                        <div>
+                            <p>${product.name} x ${item.quantity}</p>
+                            <p>$${product.price.toFixed(2)}</p>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Display total price
+            document.getElementById("checkout-total").textContent = `Total: $${total.toFixed(2)}`;
+        }
+
+        // Place order button event
+        document.getElementById("placeOrderBtn").addEventListener("click", function() {
+            // Get form values
+            const fullname = document.getElementById("fullname").value;
+            const email = document.getElementById("email").value;
+            const address = document.getElementById("address").value;
+            const city = document.getElementById("city").value;
+            const cardname = document.getElementById("cardname").value;
+            const cardnumber = document.getElementById("cardnumber").value;
+            const expiry = document.getElementById("expiry").value;
+            const cvv = document.getElementById("cvv").value;
+
+            // Check if all fields are filled
+            if (!fullname || !email || !address || !city || !cardname || !cardnumber || !expiry || !cvv) {
+                alert("Please fill in all required fields.");
+                return;
+            }
+
+            // Clear cart after order
+            localStorage.removeItem("cart");
+
+            // Show success message
+            alert("Order placed successfully! Thank you for shopping with us.");
+
+            // Redirect to homepage
+            window.location.href = "index.html";
+        });
+
+        // Run when page loads
+        loadCheckout();
+    </script>
+</body>
+</html>

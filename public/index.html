@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!-- Women's Fashion Shop Homepage -->
+<html lang="en">
+<head>
+    <!-- Website title -->
+    <title>Women's Fashion Shop</title>
+    <!-- Link to CSS file for styling -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header with title and navigation -->
+    <header>
+        <h1>Women's Fashion Shop</h1>
+        <!-- Navigation links -->
+        <a href="index.html" style="margin-left:20px;">Home</a>
+        <a href="about.html" style="margin-left:20px;">About</a>
+        <a href="cart.html" class="cart-btn" style="margin-left:20px;">Cart (<span id="cart-count">0</span>)</a>
+    </header>
+
+    <!-- Product list displayed in grid -->
+    <main class="products">
+        <!-- Dress 1 -->
+        <div class="product">
+            <img src="images/dress1.jpg" alt="Elegant White Wrap Dress">
+            <h3>Elegant White Wrap Dress</h3>
+            <p>Minimalist wrap design, perfect for casual outings</p>
+            <p class="price">$39.99</p>
+            <!-- Add this product to cart -->
+            <button onclick="addToCart(1)">Add to Cart</button>
+        </div>
+
+        <!-- Dress 2 -->
+        <div class="product">
+            <img src="images/dress2.jpg" alt="Vintage Blue Linen Dress">
+            <h3>Vintage Blue Linen Dress</h3>
+            <p>Soft linen blend with belted waist, summer essential</p>
+            <p class="price">$49.99</p>
+            <button onclick="addToCart(2)">Add to Cart</button>
+        </div>
+
+        <!-- Dress 3 -->
+        <div class="product">
+            <img src="images/dress3.jpg" alt="Off-Shoulder Satin Gown">
+            <h3>Off-Shoulder Satin Gown</h3>
+            <p>Elegant satin fabric, ideal for parties and events</p>
+            <p class="price">$59.99</p>
+            <button onclick="addToCart(3)">Add to Cart</button>
+        </div>
+
+        <!-- Heels 1 -->
+        <div class="product">
+            <img src="images/shoes1.jpg" alt="Sparkle Glitter Wedding Heels">
+            <h3>Sparkle Glitter Wedding Heels</h3>
+            <p>Shimmering finish, perfect for special occasions</p>
+            <p class="price">$49.99</p>
+            <button onclick="addToCart(4)">Add to Cart</button>
+        </div>
+
+        <!-- Heels 2 -->
+        <div class="product">
+            <img src="images/shoes2.jpg" alt="Crystal-Strap Pointed Heels">
+            <h3>Crystal-Strap Pointed Heels</h3>
+            <p>Delicate crystal straps, elegant evening pumps</p>
+            <p class="price">$54.99</p>
+            <button onclick="addToCart(5)">Add to Cart</button>
+        </div>
+
+        <!-- Heels 3 -->
+        <div class="product">
+            <img src="images/shoes3.jpg" alt="Pearl-Embellished Lace Heels">
+            <h3>Pearl-Embellished Lace Heels</h3>
+            <p>Lace texture with pearl chain strap, romantic style</p>
+            <p class="price">$59.99</p>
+            <button onclick="addToCart(6)">Add to Cart</button>
+        </div>
+
+        <!-- Pants 1 -->
+        <div class="product">
+            <img src="images/pants1.jpg" alt="Beige Linen Wide-Leg Trousers">
+            <h3>Beige Linen Wide-Leg Trousers</h3>
+            <p>Breathable linen blend, casual yet chic</p>
+            <p class="price">$29.99</p>
+            <button onclick="addToCart(7)">Add to Cart</button>
+        </div>
+
+        <!-- Pants 2 -->
+        <div class="product">
+            <img src="images/pants2.jpg" alt="Taupe Pleated Linen Trousers">
+            <h3>Taupe Pleated Linen Trousers</h3>
+            <p>High-waisted pleated design, office-ready style</p>
+            <p class="price">$39.99</p>
+            <button onclick="addToCart(8)">Add to Cart</button>
+        </div>
+
+        <!-- Pants 3 -->
+        <div class="product">
+            <img src="images/pants3.jpg" alt="White Straight-Leg Denim Jeans">
+            <h3>White Straight-Leg Denim Jeans</h>
+            <p>Classic high-waisted fit, versatile wardrobe staple</p>
+            <p class="price">$49.99</p>
+            <button onclick="addToCart(9)">Add to Cart</button>
+        </div>
+    </main>
+
+    <!-- Website footer -->
+    <footer>
+        <p>&copy; 2026 Women's Fashion Shop. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for cart functions -->
+    <script src="script.js"></script>
+    <!-- Update cart number when page loads -->
+    <script>
+        updateCartCount();
+    </script>
+</body>
+</html>

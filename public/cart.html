@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!-- Shopping Cart Page -->
+<html lang="en">
+<head>
+    <!-- Page title -->
+    <title>Your Cart</title>
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header and navigation -->
+    <header>
+        <h1>Your Shopping Cart</h1>
+        <a href="index.html" style="margin-left:20px;">Home</a>
+        <a href="about.html" style="margin-left:20px;">About</a>
+        <a href="cart.html" style="margin-left:20px;">Cart</a>
+    </header>
+
+    <!-- Cart content area -->
+    <div class="cart-container" style="max-width: 800px; margin: 30px auto;">
+        <!-- Display cart items -->
+        <div id="cart-items"></div>
+        <!-- Display total price -->
+        <div class="total" style="margin-top:20px;"></div>
+    </div>
+
+    <!-- Cart functions script -->
+    <script src="script.js"></script>
+    
+    <!-- Render cart items on page -->
+    <script>
+        // Store product information
+        const productInfo = {
+            1: { name: "Elegant White Wrap Dress", price: 39.99, image: "images/dress1.jpg" },
+            2: { name: "Vintage Blue Linen Dress", price: 49.99, image: "images/dress2.jpg" },
+            3: { name: "Off-Shoulder Satin Gown", price: 59.99, image: "images/dress3.jpg" },
+            4: { name: "Sparkle Glitter Wedding Heels", price: 49.99, image: "images/shoes1.jpg" },
+            5: { name: "Crystal-Strap Pointed Heels", price: 54.99, image: "images/shoes2.jpg" },
+            6: { name: "Pearl-Embellished Lace Heels", price: 59.99, image: "images/shoes3.jpg" },
+            7: { name: "Beige Linen Wide-Leg Trousers", price: 29.99, image: "images/pants1.jpg" },
+            8: { name: "Taupe Pleated Linen Trousers", price: 39.99, image: "images/pants2.jpg" },
+            9: { name: "White Straight-Leg Denim Jeans", price: 49.99, image: "images/pants3.jpg" }
+        };
+
+        // Load and show cart items
+        function loadCart() {
+            // Get cart data from local storage
+            let cart = getCart();
+            // Get cart item display area
+            let container = document.getElementById("cart-items");
+            // Total price starts at 0
+            let total = 0;
+
+            // If cart is empty
+            if (cart.length === 0) {
+                container.innerHTML = "<h2>Your cart is empty</h2>";
+                return;
+            }
+
+            // Loop through cart items and show them
+            cart.forEach(item => {
+                // Get product details by ID
+                let product = productInfo[item.id];
+                // Calculate subtotal
+                let subtotal = product.price * item.quantity;
+                // Add to total price
+                total += subtotal;
+
+                // Show single cart item
+                container.innerHTML += `
+                    <div class="cart-item" style="display:flex; align-items:center; gap:15px; padding:15px; border-bottom:1px solid #ddd;">
+                        <img src="${product.image}" alt="${product.name}" style="width:80px; height:80px; object-fit:cover; border-radius:4px;">
+                        <div>
+                            <h3>${product.name}</h3>
+                            <p>Price: $${product.price.toFixed(2)}</p>
+                            <p>Quantity: ${item.quantity}</p>
+                            <p>Subtotal: $${subtotal.toFixed(2)}</p>
+                        </div>
+                        <!-- Remove item button -->
+                        <button onclick="removeFromCart(${item.id})" style="margin-left:auto; background:#ff4444; color:white; padding:8px 15px; border:none; border-radius:5px; cursor:pointer;">Remove</button>
+                    </div>
+                `;
+            });
+
+            // Show total price and checkout button
+            document.querySelector(".total").innerHTML = `
+                <h2>Total: $${total.toFixed(2)}</h2>
+                <a href="checkout.html" style="display:inline-block; margin-top:15px; background:#007bff; color:white; padding:10px 20px; border-radius:5px; text-decoration:none;">Proceed to Checkout</a>
+            `;
+        }
+
+        // Run when page loads
+        loadCart();
+    </script>
+
+    <!-- Website footer -->
+    <footer>
+        <p>&copy; 2026 Women's Fashion Shop. All rights reserved.</p>
+    </footer>
+</body>
+</html>

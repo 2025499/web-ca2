@@ -1,0 +1,115 @@
+/* Global Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Layout and Spacing */
+body {
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styling - Navigation Bar */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: #ffeef4;
+    color: #333;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Header Title Styling */
+header h1 {
+    font-family: 'Georgia', serif;
+    font-size: 2.2em;
+    color: #d84a8c;
+}
+
+/* Header Link Styling */
+header a {
+    color: #d84a8c;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+/* General Link Styling */
+a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Product Grid Layout - 3 columns for 9 products */
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Individual Product Card Styling */
+.product {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+/* Product Image Styling */
+.product img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+/* Product Price Text Styling */
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #c70000;
+}
+
+/* Add to Cart Button Styling */
+button {
+    padding: 8px 16px;
+    background: #ff8fb3;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* Cart Item Layout */
+.cart-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Order Total Text Styling */
+.total {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Footer Styling */
+footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
